@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import sendEmail from './sendEmail';
+import sendEmail from '../utils/sendEmail';
 
 export default class Event {
   //Register for event
