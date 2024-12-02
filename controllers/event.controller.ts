@@ -23,10 +23,12 @@ export default class Event {
           message,
         });
 
-        return attendee;
+        return { attendee };
       });
 
-      if (transaction) res.status(200).json('Successfully registered');
+      const { attendee } = transaction;
+
+      res.status(200).json({ message: 'Successfully registered', attendee });
     } catch (err) {
       console.log('Error showing:', err);
       res.status(500).json('Error registering. Try again!');
