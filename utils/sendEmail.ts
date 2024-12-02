@@ -1,7 +1,9 @@
 import nodemailer, { TransportOptions } from 'nodemailer';
+import { config } from 'dotenv';
+config();
 
 interface EmailOptions {
-  email: string | string[];
+  email: string;
   subject: string;
   message: string;
 }
@@ -13,6 +15,9 @@ const transporter = nodemailer.createTransport({
     user: process.env.GMAIL_NAME,
     pass: process.env.GMAIL_PASSWORD,
   },
+  // Add these security options
+  secure: true,
+  requireTLS: true,
 } as TransportOptions);
 
 export default async function sendEmail(options: EmailOptions) {

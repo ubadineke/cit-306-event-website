@@ -9,6 +9,17 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Attendee {
+  id        String @unique @default(cuid())
+  firstName String
+  lastName  String
+
+  email       String @id @unique
+  phoneNumber String
+  gender      String
 }
